@@ -15,9 +15,11 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
     <link href="FLAME.Server.styles.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="FLAME.WASM.Client.styles.css" rel="stylesheet" />
 </head>
 <body>
-    <component type="typeof(App)" render-mode="ServerPrerendered" />
+    <component type="typeof(FLAME.WASM.Client.App)" render-mode="Server" />
 
     <div id="blazor-error-ui">
         <environment include="Staging,Production">
