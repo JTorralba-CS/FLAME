@@ -1,4 +1,3 @@
-using FLAME.Server.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +27,6 @@ namespace FLAME.Server
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddScoped<System.Net.Http.HttpClient>();
         }
 
