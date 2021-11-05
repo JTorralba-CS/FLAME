@@ -42,11 +42,11 @@ else
     {
         try
         {
-            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("https://localhost/WeatherForecast");
+            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("https://FLAME.Solutions/WeatherForecast");
         }
         catch (Exception E)
         {
-            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("https://FLAME.Solutions/WeatherForecast");
+            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("https://localhost/WeatherForecast");
         }
     }
 
