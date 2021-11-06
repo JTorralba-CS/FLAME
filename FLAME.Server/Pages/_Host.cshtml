@@ -7,19 +7,28 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>FLAME.Server</title>
+
+    <meta name="apple-mobile-web-app-title" content="FLAME">
+    <link rel="apple-touch-icon" sizes="200x200" href="Logo.png" />
+    <link href="Logo.png" rel="apple-touch-icon" type="image/png" />
+    <link href="Logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="Logo.png" rel="mask-icon" type="" color="#111" />
+
     <base href="~/" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link href="css/app.css" rel="stylesheet" />
-    <link href="FLAME.WASM.Client.styles.css" rel="stylesheet" />
+
+    <link href="Style.css" rel="stylesheet" />
+    <link href="Spinner.css" rel="stylesheet" />
 </head>
+
 <body>
     <component type="typeof(FLAME.WASM.Client.App)" render-mode="Server" />
 
-    <div id="blazor-error-ui">
+    @*<div id="blazor-error-ui">
         <environment include="Staging,Production">
             An error has occurred. This application may no longer respond until reloaded.
         </environment>
@@ -28,8 +37,9 @@
         </environment>
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
-    </div>
+    </div>*@
 
     <script src="_framework/blazor.server.js"></script>
 </body>
+
 </html>

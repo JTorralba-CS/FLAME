@@ -1,0 +1,34 @@
+﻿@inherits LayoutComponentBase
+
+@inject NavigationManager MyNavigationManager
+
+    <div class="page">
+        <Header Title=@Menu/>
+        <Menu />
+        <main tabindex="0">
+            <div>
+                <table class="table-container">
+                    <tr>
+                        <td style="text-align:center">
+                            @Body
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+    </div>
+
+@code{
+
+    public string Menu { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        Menu = MyNavigationManager.ToBaseRelativePath(MyNavigationManager.Uri);
+        if (Menu == "")
+        {
+            Menu = "FLAME";
+        }
+        Console.WriteLine("Menu = " + Menu);
+    }
+}

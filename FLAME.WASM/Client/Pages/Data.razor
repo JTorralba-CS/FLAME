@@ -1,0 +1,63 @@
+﻿@page "/Data"
+@using FLAME.WASM.Shared
+@inject HttpClient Http
+
+@if (Records == null)
+{
+    <Busy/>
+}
+else
+{
+<table id="data" class="center">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>℃</th>
+            <th>℉</th>
+            <th>Summary</th>
+            <th>First</th>
+            <th>Last</th>
+            <th>Domain</th>
+            <th>Title</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+
+    @foreach (var Record in Records)
+    {
+        <tr>
+            <td>@Record.ID</td>
+            <td>@Record.Date.ToShortDateString()</td>
+            <td>@Record.TemperatureC</td>
+            <td>@Record.TemperatureF</td>
+            <td>@Record.Summary</td>
+            <td>@Record.First</td>
+            <td>@Record.Last</td>
+            <td>@Record.Domain</td>
+            <td>@Record.Title</td>
+            <td>@Record.Phone</td>
+        </tr>
+    }
+
+    <tfoot>
+        <tr><br></tr>
+    </tfoot>
+</table>
+}
+
+@code {
+    private Record[] Records;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Records = await Http.GetFromJsonAsync<Record[]>("https://FLAME.Solutions/Table");
+        }
+        catch (Exception E)
+        {
+            Records = await Http.GetFromJsonAsync<Record[]>("https://localhost/Table");
+        }
+    }
+}

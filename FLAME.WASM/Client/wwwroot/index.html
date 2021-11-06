@@ -5,22 +5,54 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>FLAME.WASM</title>
+
+    <meta name="apple-mobile-web-app-title" content="FLAME">
+    <link rel="apple-touch-icon" sizes="200x200" href="Logo.png" />
+    <link href="Logo.png" rel="apple-touch-icon" type="image/png" />
+    <link href="Logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="Logo.png" rel="mask-icon" type="" color="#111" />
+
     <base href="/" />
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/app.css" rel="stylesheet" />
-    <link href="FLAME.WASM.Client.styles.css" rel="stylesheet" />
+
+    <link href="Style.css" rel="stylesheet" />
+    <link href="Spinner.css" rel="stylesheet" />
+
     <link href="manifest.json" rel="manifest" />
-    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
 </head>
 
-<body>
-    <div id="app">Loading...</div>
+<body translate="no">
+    <div id="app">
+        <div class="page">
+            <main tabindex="0">
+                <div>
+                    <table class="table-container">
+                        <tr>
+                            <td style="text-align:center">
+                                <table class="center">
+                                    <tr>
+                                        <td>
+                                            <div class="spinner">
+                                                <div class="bounce1"></div>
+                                                <div class="bounce2"></div>
+                                                <div class="bounce3"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
 
-    <div id="blazor-error-ui">
+    <!--<div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
-    </div>
+    </div>-->
+
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
