@@ -24,4 +24,4 @@ Executable [Argument(s)]
 
 ## Demo:
 
-http://FLAME.com
+http://FLAME.Solutions
