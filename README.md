@@ -18,5 +18,5 @@ C#\
 
 ## Demo:
 
-https://FLAME.Solutions (Blazor WASM)
+https://FLAME.Solutions (Blazor WASM)\
 https://FLAME.Solutions:9110 (Blazor Server)
