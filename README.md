@@ -2,26 +2,21 @@
 
 # FLAME
 
-FLAME implementation.
+Single codebase Blazor (Server & WASM) implementation.
 
 ## Stack:
 
-Visual Studio Code\
+Visual Studio\
 C#\
 .NET
 
 ## Usage:
 
 1. Open solution.
-2. Compile and publish project(s).
-3. Excecute application.
-
-## Syntax:
-
-Executable [Argument(s)]
-
-*Argument(s)*:
+2. Set multiple startup projects (FLAME.Server & FLAME.WASM.Server).
+3. Start projects.
 
 ## Demo:
 
-https://FLAME.Solutions
+https://FLAME.Solutions (Blazor WASM)
+https://FLAME.Solutions:9110 (Blazor Server)
