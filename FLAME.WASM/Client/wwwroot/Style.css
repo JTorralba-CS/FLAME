@@ -279,6 +279,14 @@ a {
 	background-color: #B75356;
 }
 
+#data thead tr:hover {
+	background-color: transparent;
+}
+
+#data tfoot tr:hover {
+	background-color: transparent;
+}
+
 .form-control {
 	display: block;
 	min-width: 375px;
