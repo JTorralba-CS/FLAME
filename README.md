@@ -2,7 +2,7 @@
 
 # FLAME
 
-Single codebase Blazor (Server & WASM) implementation.
+Single codebase Blazor (WASM & Server) implementation.
 
 ## Stack:
 
@@ -13,10 +13,10 @@ C#\
 ## Usage:
 
 1. Open solution.
-2. Set multiple startup projects (FLAME.Server & FLAME.WASM.Server).
+2. Set multiple startup projects (FLAME.WASM.Server & FLAME.Server).
 3. Start projects.
 
 ## Demo:
 
-https://FLAME.Solutions (Blazor WASM)\
-https://FLAME.Solutions:9110 (Blazor Server)
+https://FLAME.Solutions (FLAME.WASM.Server)\
+https://FLAME.Solutions:9110 (FLAME.Server)
