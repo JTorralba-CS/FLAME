@@ -2,6 +2,8 @@
 @using FLAME.WASM.Shared
 @inject HttpClient Http
 
+@inject UniformResourceLocator URL
+
 <PageTitle>Weather forecast</PageTitle>
 
 <h1>Weather forecast</h1>
@@ -42,6 +44,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>(URL.Domain + "WeatherForecast");
     }
 }
