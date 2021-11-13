@@ -18,5 +18,5 @@ C#\
 
 ## Demo:
 
-https://FLAME.Solutions (FLAME.WASM.Server)\
-https://FLAME.Solutions:9110 (FLAME.Server)
+https://FLAME.Solutions (WASM)\
+https://FLAME.Solutions:9110 (Server)
