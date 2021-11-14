@@ -60,7 +60,7 @@ namespace FLAME.WASM.Server.Controllers
         {
             var rng = new Random();
 
-            return Enumerable.Range(1, 10).Select(index => new Record
+            return Enumerable.Range(1, 17).Select(index => new Record
             {
                 ID = index,
                 Date = DateTime.Now.AddDays(index),
