@@ -2,8 +2,6 @@
 
 @inject NavigationManager MyNavigationManager
 
-@using FLAME.WASM.Shared
-
 @inject UniformResourceLocator URL
 
     <div class="page">
@@ -23,7 +21,7 @@
     </div>
 
 @code {
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         URL.SetBase(MyNavigationManager.BaseUri.ToLower());
     }
@@ -33,4 +31,3 @@
         URL.SetPage(MyNavigationManager.ToBaseRelativePath(MyNavigationManager.Uri.ToLower()));
     }
 }
-
