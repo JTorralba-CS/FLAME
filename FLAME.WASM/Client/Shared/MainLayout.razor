@@ -1,24 +1,26 @@
 ﻿@inherits LayoutComponentBase
 
-@using FLAME.WASM.Shared
-@inject UniformResourceLocator URL
 @inject NavigationManager MyNavigationManager
 
-<div class="page">
-    <div class="sidebar">
+@using FLAME.WASM.Shared
+
+@inject UniformResourceLocator URL
+
+    <div class="page">
+        <Header Title=@URL.Page />
         <NavMenu />
+        <main tabindex="0">
+            <div>
+                <table class="table-container">
+                    <tr>
+                        <td style="text-align:center">
+                            @Body
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </main>
     </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
 
 @code {
     protected override async Task OnInitializedAsync()
@@ -31,3 +33,4 @@
         URL.SetPage(MyNavigationManager.ToBaseRelativePath(MyNavigationManager.Uri.ToLower()));
     }
 }
+

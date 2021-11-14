@@ -1,7 +1,7 @@
-using FLAME.WASM.Client;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
+using FLAME.WASM.Client;
 using FLAME.WASM.Shared;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
