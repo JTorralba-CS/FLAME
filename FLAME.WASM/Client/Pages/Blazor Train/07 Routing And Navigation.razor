@@ -1,0 +1,118 @@
+﻿@page "/07"
+@page "/07/{ID:int}"
+@page "/07/{Title}"
+@page "/07/{Title}/{Last}"
+
+@using Microsoft.AspNetCore.WebUtilities
+
+@implements IDisposable
+
+@inject NavigationManager NavManager;
+
+<table id="data" class="center">
+    <thead>
+        <tr>
+            <th style="text-align:center">@Title</th>
+        </tr>
+    </thead>
+
+    @if (Filter != null)
+    {
+        @foreach (var Record in Filter)
+        {
+            <tr>
+                <td>
+                    @Record.ID&nbsp;@Record.First&nbsp;@Record.Last
+                </td>
+            </tr>
+        }
+    }
+
+    <tr>
+        <td>
+        </td>
+    </tr>
+
+    <tfoot>
+        <tr><button @onclick="@(() => NavManager.NavigateTo("07/R/R"))">Filter</button></tr>
+        <tr><br /></tr>
+    </tfoot>
+</table>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public int? ID { get; set; }
+
+    [Parameter]
+    public string Last { get; set; }
+
+    List<Record> Table;
+    List<Record> Filter;
+
+    protected override void OnParametersSet()
+    {
+        var URI = NavManager.ToAbsoluteUri(NavManager.Uri);
+        if (QueryHelpers.ParseQuery(URI.Query).TryGetValue("Title", out var Data))
+        {
+            Title = Data;
+        }
+
+        if (Title == null || Title == "")
+        {
+            Title = "07";
+        }
+
+        Table = new List<Record>();
+        Table.Add(new Record { ID = 1, First = "Abby", Last = "Dunridge" });
+        Table.Add(new Record { ID = 2, First = "Cherice", Last = "Seckom" });
+        Table.Add(new Record { ID = 3, First = "Sweltering", Last = "Marcello" });
+
+        if (Last != null)
+        {
+            Filter = (from X in Table
+                      where X.Last.ToLower().Contains(Last.ToLower())
+                      select X).ToList();
+        }
+        else
+        {
+            if (ID != null)
+            {
+                Filter = (from X in Table
+                          where X.ID == ID
+                          select X).ToList();
+            }
+            else
+            {
+                Filter = Table;
+            }
+        }
+    }
+
+    public class Record
+    {
+        public int ID { get; set; }
+        public string First { get; set; }
+        public string Last { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+        NavManager.LocationChanged += LocationChanged;
+        base.OnInitialized();
+    }
+
+    void LocationChanged(object Sender, LocationChangedEventArgs E)
+    {
+        string NavigationMethod = E.IsNavigationIntercepted ? "HTML" : "CODE";
+        Console.WriteLine($"Navigated By {NavigationMethod} To {E.Location}");
+        System.Diagnostics.Debug.WriteLine($"Navigated By {NavigationMethod} To {E.Location}");
+    }
+
+    void IDisposable.Dispose()
+    {
+        NavManager.LocationChanged -= LocationChanged;
+    }
+}
