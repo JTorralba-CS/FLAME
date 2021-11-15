@@ -107,8 +107,8 @@
     void LocationChanged(object Sender, LocationChangedEventArgs E)
     {
         string NavigationMethod = E.IsNavigationIntercepted ? "HTML" : "CODE";
-        Console.WriteLine($"Navigated By {NavigationMethod} To {E.Location}");
-        System.Diagnostics.Debug.WriteLine($"Navigated By {NavigationMethod} To {E.Location}");
+        Console.WriteLine($"Console: Navigated By {NavigationMethod} To {E.Location}");
+        System.Diagnostics.Debug.WriteLine($"Debug: Navigated By {NavigationMethod} To {E.Location}");
     }
 
     void IDisposable.Dispose()
