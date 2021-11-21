@@ -1,0 +1,77 @@
+﻿@implements IDisposable
+
+<div style="
+    padding: 1vw;
+    margin-right: 1vw;
+    margin-top: 1vw;
+    float: left;
+    background-color: lightgray;
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0,0.75);"
+>
+<button @onclick="Close">&nbspCLOSE&nbsp</button>
+<br />
+<br />
+
+@if (Message != null)
+    {
+        <p>@Message</p>
+    }
+
+</div>
+
+@code {
+    [Parameter]
+    public string Message { get; set; }
+
+    [Parameter]
+    public EventCallback<string> CloseRequested { get; set; }
+
+    async Task Close()
+    {
+        await CloseRequested.InvokeAsync(Message);
+    }
+
+    public override async Task SetParametersAsync(ParameterView Parameters)
+    {
+        if (Message != null)
+        {
+            Console.WriteLine($"Console: SetParametersAsync() " + Message);
+            System.Diagnostics.Debug.WriteLine($"Debug: SetParametersAsync() " + Message);
+        }
+        else
+        {
+            Console.WriteLine($"Console: SetParametersAsync()");
+            System.Diagnostics.Debug.WriteLine($"Debug: SetParametersAsync()");
+        }
+
+        await base.SetParametersAsync(Parameters);
+    }
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine($"Console: OnInitialized()");
+        System.Diagnostics.Debug.WriteLine($"Debug: OnInitialized()");
+
+        base.OnInitialized();
+    }
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine($"Console: OnParametersSet()");
+        System.Diagnostics.Debug.WriteLine($"Debug: OnParametersSet()");
+    }
+
+    protected override void OnAfterRender(bool FirstRender)
+    {
+        Console.WriteLine($"Console: OnAfterRender()");
+        System.Diagnostics.Debug.WriteLine($"Debug: OnAfterRender()");
+
+        base.OnAfterRender(FirstRender);
+    }
+
+    void IDisposable.Dispose()
+    {
+        Console.WriteLine($"Console: Dispose()");
+        System.Diagnostics.Debug.WriteLine($"Debug: Dispose()");
+    }
+}

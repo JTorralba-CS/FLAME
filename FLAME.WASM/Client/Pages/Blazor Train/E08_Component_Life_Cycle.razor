@@ -1,0 +1,90 @@
+﻿@page "/08"
+
+@*@implements IDisposable*@
+
+<table id="data" class="center">
+    <thead>
+        <tr>
+            <th style="text-align:center">@Title</th>
+        </tr>
+    </thead>
+
+    <tr>
+        <td>
+            <button @onclick="Create">&nbspCREATE&nbsp</button>
+            <br />
+            <br />
+            @foreach (var Message in Messages)
+            {
+                <E08_Create_Component Message="@Message" CloseRequested="CloseRequested" />
+            }
+        </td>
+    </tr>
+
+    <tfoot>
+        <tr><br /></tr>
+    </tfoot>
+</table>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    List<string> Messages = new List<string>();
+
+    int Counter = 0;
+
+void Create()
+    {
+        Counter++;
+
+        string Message = $"{Counter}";
+        Messages.Add(Message);
+    }
+
+    void CloseRequested(string Message)
+    {
+        Messages.Remove(Message);
+    }
+
+    //public override async Task SetParametersAsync(ParameterView Parameters)
+    //{
+    //    Console.WriteLine($"Console: OnParametersAsync()");
+    //    System.Diagnostics.Debug.WriteLine($"Debug: OnParametersAsync()");
+
+    //    await base.SetParametersAsync(Parameters);
+    //}
+
+    //protected override void OnInitialized()
+    //{
+    //    Console.WriteLine($"Console: OnInitialized()");
+    //    System.Diagnostics.Debug.WriteLine($"Debug: OnInitialized()");
+
+    //    base.OnInitialized();
+    //}
+
+    protected override void OnParametersSet()
+    {
+        //Console.WriteLine($"Console: OnParametersSet()");
+        //System.Diagnostics.Debug.WriteLine($"Debug: OnParametersSet()");
+
+        if (Title == null || Title == "")
+        {
+            Title = "08";
+        }
+    }
+
+    //protected override void OnAfterRender(bool FirstRender)
+    //{
+    //    Console.WriteLine($"Console: OnAfterRender()");
+    //    System.Diagnostics.Debug.WriteLine($"Debug: OnAfterRender()");
+
+    //    base.OnAfterRender(FirstRender);
+    //}
+
+    //void IDisposable.Dispose()
+    //{
+    //    Console.WriteLine($"Console: Dispose()");
+    //    System.Diagnostics.Debug.WriteLine($"Debug: Dispose()");
+    //}
+}
