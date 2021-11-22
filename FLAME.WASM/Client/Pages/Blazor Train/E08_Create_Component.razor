@@ -2,6 +2,8 @@
 
 @inject Dispose Dispose
 
+@inject NavigationManager MyNavigationManager
+
 <div style="
     padding: 1vw;
     margin-right: 1vw;
@@ -27,6 +29,8 @@
 
     [Parameter]
     public EventCallback<string> CloseRequested { get; set; }
+
+    bool Working = false;
 
     async Task Close()
     {
@@ -64,6 +68,45 @@
         {
             Console.WriteLine($"Console: N OnInitialized()");
             System.Diagnostics.Debug.WriteLine($"Debug: N OnInitialized()");
+        }
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        base.OnParametersSet();
+
+        if (!Working)
+        {
+            Working = true;
+
+            if (Message != null)
+            {
+                Console.WriteLine($"Console: {Message} OnParametersSetAsync() Start Working");
+                System.Diagnostics.Debug.WriteLine($"Debug: {Message} OnParametersSetAsync() Start Working");
+            }
+            else
+            {
+                Console.WriteLine($"Console: N OnParametersSetAsync() Start Working");
+                System.Diagnostics.Debug.WriteLine($"Debug: N OnParametersSetAsync() Start Working");
+            }
+
+            while (Working)
+            {
+                await Task.Delay(500);
+            }
+
+            if (Dispose.Message != null)
+            {
+                Console.WriteLine($"Console: {Dispose.Message} OnParametersSetAsync() Stopped Working");
+                System.Diagnostics.Debug.WriteLine($"Debug: {Dispose.Message} OnParametersSetAsync() Stopped Working");
+            }
+            else
+            {
+                Console.WriteLine($"Console: N OnParametersSetAsync() Start Working");
+                System.Diagnostics.Debug.WriteLine($"Debug: N OnParametersSetAsync() Stopped Working");
+            }
+
+            Dispose.Message = null;
         }
     }
 
@@ -105,12 +148,21 @@
         {
             Console.WriteLine($"Console: {Dispose.Message} Dispose()");
             System.Diagnostics.Debug.WriteLine($"Debug: {Dispose.Message} Dispose()");
-            Dispose.Message = null;
         }
         else
         {
             Console.WriteLine($"Console: N Dispose()");
             System.Diagnostics.Debug.WriteLine($"Debug: N Dispose()");
+        }
+
+        if (Working)
+        {
+            Working = false;
+
+            if (MyNavigationManager.BaseUri.Contains("9110"))
+            {
+                Task.Delay(5000).GetAwaiter().GetResult();
+            }
         }
     }
 }
