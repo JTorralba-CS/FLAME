@@ -1,5 +1,7 @@
 ﻿@implements IDisposable
 
+@inject Dispose Dispose
+
 <div style="
     padding: 1vw;
     margin-right: 1vw;
@@ -28,6 +30,8 @@
 
     async Task Close()
     {
+        Dispose.SetMessage(Message);
+
         await CloseRequested.InvokeAsync(Message);
     }
 
@@ -35,13 +39,13 @@
     {
         if (Message != null)
         {
-            Console.WriteLine($"Console: SetParametersAsync() " + Message);
-            System.Diagnostics.Debug.WriteLine($"Debug: SetParametersAsync() " + Message);
+            Console.WriteLine($"Console: {Message} SetParametersAsync()");
+            System.Diagnostics.Debug.WriteLine($"Debug: {Message} SetParametersAsync()");
         }
         else
         {
-            Console.WriteLine($"Console: SetParametersAsync()");
-            System.Diagnostics.Debug.WriteLine($"Debug: SetParametersAsync()");
+            Console.WriteLine($"Console: N SetParametersAsync()");
+            System.Diagnostics.Debug.WriteLine($"Debug: N SetParametersAsync()");
         }
 
         await base.SetParametersAsync(Parameters);
@@ -49,29 +53,64 @@
 
     protected override void OnInitialized()
     {
-        Console.WriteLine($"Console: OnInitialized()");
-        System.Diagnostics.Debug.WriteLine($"Debug: OnInitialized()");
-
         base.OnInitialized();
+
+        if (Message != null)
+        {
+            Console.WriteLine($"Console: {Message} OnInitialized()");
+            System.Diagnostics.Debug.WriteLine($"Debug: {Message} OnInitialized()");
+        }
+        else
+        {
+            Console.WriteLine($"Console: N OnInitialized()");
+            System.Diagnostics.Debug.WriteLine($"Debug: N OnInitialized()");
+        }
     }
 
     protected override void OnParametersSet()
     {
-        Console.WriteLine($"Console: OnParametersSet()");
-        System.Diagnostics.Debug.WriteLine($"Debug: OnParametersSet()");
+        base.OnParametersSet();
+
+        if (Message != null)
+        {
+            Console.WriteLine($"Console: {Message} OnParametersSet()");
+            System.Diagnostics.Debug.WriteLine($"Debug: {Message} OnParametersSet()");
+        }
+        else
+        {
+            Console.WriteLine($"Console: N OnParametersSet()");
+            System.Diagnostics.Debug.WriteLine($"Debug: N OnParametersSet()");
+        }
     }
 
     protected override void OnAfterRender(bool FirstRender)
     {
-        Console.WriteLine($"Console: OnAfterRender()");
-        System.Diagnostics.Debug.WriteLine($"Debug: OnAfterRender()");
-
         base.OnAfterRender(FirstRender);
+
+        if (Message != null)
+        {
+            Console.WriteLine($"Console: {Message} OnAfterRender() FirstRender = {FirstRender}");
+            System.Diagnostics.Debug.WriteLine($"Debug: {Message} OnAfterRender() FirstRender = {FirstRender}");
+        }
+        else
+        {
+            Console.WriteLine($"Console: N OnAfterRender() FirstRender = {FirstRender}");
+            System.Diagnostics.Debug.WriteLine($"Debug: N OnAfterRender() FirstRender = {FirstRender}");
+        }
     }
 
     void IDisposable.Dispose()
     {
-        Console.WriteLine($"Console: Dispose()");
-        System.Diagnostics.Debug.WriteLine($"Debug: Dispose()");
+        if (Dispose.Message != null)
+        {
+            Console.WriteLine($"Console: {Dispose.Message} Dispose()");
+            System.Diagnostics.Debug.WriteLine($"Debug: {Dispose.Message} Dispose()");
+            Dispose.Message = null;
+        }
+        else
+        {
+            Console.WriteLine($"Console: N Dispose()");
+            System.Diagnostics.Debug.WriteLine($"Debug: N Dispose()");
+        }
     }
 }

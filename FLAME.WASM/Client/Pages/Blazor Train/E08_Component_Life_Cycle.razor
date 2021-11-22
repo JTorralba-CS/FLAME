@@ -1,6 +1,6 @@
 ﻿@page "/08"
 
-@*@implements IDisposable*@
+@implements IDisposable
 
 <table id="data" class="center">
     <thead>
@@ -34,10 +34,9 @@
 
     int Counter = 0;
 
-void Create()
+    void Create()
     {
         Counter++;
-
         string Message = $"{Counter}";
         Messages.Add(Message);
     }
@@ -47,26 +46,28 @@ void Create()
         Messages.Remove(Message);
     }
 
-    //public override async Task SetParametersAsync(ParameterView Parameters)
-    //{
-    //    Console.WriteLine($"Console: OnParametersAsync()");
-    //    System.Diagnostics.Debug.WriteLine($"Debug: OnParametersAsync()");
+    public override async Task SetParametersAsync(ParameterView Parameters)
+    {
+        Console.WriteLine($"Console: 0 OnParametersAsync()");
+        System.Diagnostics.Debug.WriteLine($"Debug: 0 OnParametersAsync()");
 
-    //    await base.SetParametersAsync(Parameters);
-    //}
+        await base.SetParametersAsync(Parameters);
+    }
 
-    //protected override void OnInitialized()
-    //{
-    //    Console.WriteLine($"Console: OnInitialized()");
-    //    System.Diagnostics.Debug.WriteLine($"Debug: OnInitialized()");
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
 
-    //    base.OnInitialized();
-    //}
+        Console.WriteLine($"Console: 0 OnInitialized()");
+        System.Diagnostics.Debug.WriteLine($"Debug: 0 OnInitialized()");
+    }
 
     protected override void OnParametersSet()
     {
-        //Console.WriteLine($"Console: OnParametersSet()");
-        //System.Diagnostics.Debug.WriteLine($"Debug: OnParametersSet()");
+        base.OnParametersSet();
+
+        Console.WriteLine($"Console: 0 OnParametersSet()");
+        System.Diagnostics.Debug.WriteLine($"Debug: 0 OnParametersSet()");
 
         if (Title == null || Title == "")
         {
@@ -74,17 +75,17 @@ void Create()
         }
     }
 
-    //protected override void OnAfterRender(bool FirstRender)
-    //{
-    //    Console.WriteLine($"Console: OnAfterRender()");
-    //    System.Diagnostics.Debug.WriteLine($"Debug: OnAfterRender()");
+    protected override void OnAfterRender(bool FirstRender)
+    {
+        base.OnAfterRender(FirstRender);
 
-    //    base.OnAfterRender(FirstRender);
-    //}
+        Console.WriteLine($"Console: 0 OnAfterRender() FirstRender = {FirstRender}");
+        System.Diagnostics.Debug.WriteLine($"Debug: 0 OnAfterRender() FirstRender = {FirstRender}");
+    }
 
-    //void IDisposable.Dispose()
-    //{
-    //    Console.WriteLine($"Console: Dispose()");
-    //    System.Diagnostics.Debug.WriteLine($"Debug: Dispose()");
-    //}
+    void IDisposable.Dispose()
+    {
+        Console.WriteLine($"Console: 0 Dispose()");
+        System.Diagnostics.Debug.WriteLine($"Debug: 0 Dispose()");
+    }
 }
