@@ -2,11 +2,10 @@ using FLAME.WASM.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-
 builder.Services.AddScoped<System.Net.Http.HttpClient>();
+
 builder.Services.AddSingleton<UniformResourceLocator>();
 builder.Services.AddSingleton<Dispose>();
 
@@ -20,11 +19,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-
+//app.UseHttpsRedirection();
+//app.UseRouting();
 app.UseStaticFiles();
-
-app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");

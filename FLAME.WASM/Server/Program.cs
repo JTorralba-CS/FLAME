@@ -1,7 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
@@ -19,16 +17,13 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-
 app.UseBlazorFrameworkFiles();
+//app.UseHttpsRedirection();
+//app.UseRouting();
 app.UseStaticFiles();
 
-app.UseRouting();
-
-
-app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+app.MapRazorPages();
 
 app.Run();
