@@ -18,7 +18,7 @@
 
 @if (Message != null)
     {
-        <p>@Message</p>
+        <p>@Message @Timer</p>
     }
 
 </div>
@@ -28,14 +28,28 @@
     public string Message { get; set; }
 
     [Parameter]
+    public int Timer { get; set; }
+
+    [Parameter]
     public EventCallback<string> CloseRequested { get; set; }
 
     bool Working = false;
 
+    async Task StartTimerAsync()
+    {
+        int I = 34;
+        while (I >= 0 && Working)
+        {
+            Timer = I;
+            StateHasChanged();
+            await Task.Delay(1000);
+            I--;
+        }
+    }
+
     async Task Close()
     {
         Dispose.SetMessage(Message);
-
         await CloseRequested.InvokeAsync(Message);
     }
 
@@ -90,23 +104,19 @@
                 System.Diagnostics.Debug.WriteLine($"Debug: N OnParametersSetAsync() Start Working");
             }
 
-            while (Working)
-            {
-                await Task.Delay(500);
-            }
+            await StartTimerAsync();
 
             if (Dispose.Message != null)
             {
                 Console.WriteLine($"Console: {Dispose.Message} OnParametersSetAsync() Stopped Working");
                 System.Diagnostics.Debug.WriteLine($"Debug: {Dispose.Message} OnParametersSetAsync() Stopped Working");
+                Dispose.Message = null;
             }
             else
             {
                 Console.WriteLine($"Console: N OnParametersSetAsync() Start Working");
                 System.Diagnostics.Debug.WriteLine($"Debug: N OnParametersSetAsync() Stopped Working");
             }
-
-            Dispose.Message = null;
         }
     }
 
@@ -161,7 +171,7 @@
 
             if (MyNavigationManager.BaseUri.Contains("9110"))
             {
-                Task.Delay(5000).GetAwaiter().GetResult();
+                Task.Delay(250).GetAwaiter().GetResult();
             }
         }
     }
