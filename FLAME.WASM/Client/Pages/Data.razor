@@ -52,6 +52,8 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        Console.WriteLine("XXX: " + URL.Domain);
         Records = await Http.GetFromJsonAsync<Record[]>(URL.Domain + "Table");
+        Console.WriteLine("XXX2: " + URL.Domain + "Table");
     }
 }
