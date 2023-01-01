@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLAME.WASM.Client", "FLAME.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLAME.WASM.Shared", "FLAME.WASM\Shared\FLAME.WASM.Shared.csproj", "{27976102-C4F8-47CB-832F-C306EF31FD00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLAME.MAUI", "FLAME.MAUI\FLAME.MAUI.csproj", "{FB50C59A-E9AE-47D4-8000-D2028EBD2868}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{27976102-C4F8-47CB-832F-C306EF31FD00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27976102-C4F8-47CB-832F-C306EF31FD00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27976102-C4F8-47CB-832F-C306EF31FD00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB50C59A-E9AE-47D4-8000-D2028EBD2868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB50C59A-E9AE-47D4-8000-D2028EBD2868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB50C59A-E9AE-47D4-8000-D2028EBD2868}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FB50C59A-E9AE-47D4-8000-D2028EBD2868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB50C59A-E9AE-47D4-8000-D2028EBD2868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB50C59A-E9AE-47D4-8000-D2028EBD2868}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
