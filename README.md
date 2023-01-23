@@ -13,7 +13,7 @@ C#\
 ## Usage:
 
 1. Open solution.
-2. Set multiple startup projects (FLAME.WASM.Server & FLAME.Server).
+2. Set multiple startup projects (FLAME.WASM.Server & FLAME.Server & MAUI).
 3. Start projects.
 
 ## Demo:
