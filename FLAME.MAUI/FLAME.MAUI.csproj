@@ -60,4 +60,14 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="MVVM\View\V_About.xaml.cs">
+	    <DependentUpon>V_About.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="MVVM\Model\" />
+	</ItemGroup>
+
 </Project>

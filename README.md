@@ -2,7 +2,7 @@
 
 # FLAME
 
-Single codebase Blazor (WASM & Server) implementation.
+Single codebase Blazor (WASM & Server & MAUI) implementation.
 
 ## Stack:
 
