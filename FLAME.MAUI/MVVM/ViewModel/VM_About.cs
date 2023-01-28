@@ -1,4 +1,6 @@
-﻿namespace FLAME.MAUI.MVVM.ViewModel
+﻿using System.Windows.Input;
+
+namespace FLAME.MAUI.MVVM.ViewModel
 {
     public partial class VM_About : VM_
     {
@@ -8,5 +10,17 @@
             FooterLeft = true;
             FooterRight = true;
         }
+
+        public override ICommand OnClickCommand => new Command<string>((X) =>
+        {
+            if (X == "FLAME")
+            {
+                FooterText = "© " + DateTime.Now.Year.ToString() + " FLAME Solutions";
+            }
+            else
+            {
+                FooterText = X;
+            }
+        });
     }
 }

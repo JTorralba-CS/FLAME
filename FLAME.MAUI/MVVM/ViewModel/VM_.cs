@@ -23,7 +23,7 @@ namespace FLAME.MAUI.MVVM.ViewModel
             FooterText = "© " + DateTime.Now.Year.ToString() + " FLAME Solutions";
         }
 
-        public ICommand OnClickCommand => new Command<string>((X) =>
+        public virtual ICommand OnClickCommand => new Command<string>((X) =>
         {
             if (X == "FLAME")
             {
