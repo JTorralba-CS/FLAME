@@ -1,10 +1,12 @@
 ﻿namespace FLAME.MAUI.MVVM.ViewModel
 {
-    public class VM_About: VM_Base
+    public partial class VM_About : VM_
     {
         public VM_About()
         {
-            Title = "FLAME";
+            HeaderText = "FLAME";
+            FooterLeft = true;
+            FooterRight = true;
         }
     }
 }

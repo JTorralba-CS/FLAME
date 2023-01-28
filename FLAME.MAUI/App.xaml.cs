@@ -13,7 +13,7 @@
         {
             var Desktop = base.CreateWindow(activationState);
 
-            const int Width =414;
+            const int Width = 414;
             const int Height = 896;
 
             Desktop.MinimumWidth = Width;

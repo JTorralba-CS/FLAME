@@ -1,35 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FLAME.MAUI.MVVM.View.V_About"
-             xmlns:VM="clr-namespace:FLAME.MAUI.MVVM.ViewModel"
-             x:DataType="VM:VM_About">
 
-    <Grid RowDefinitions="48,*,48" ColumnDefinitions="48,*,48">
+<V:V_ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="FLAME.MAUI.MVVM.View.V_About"
 
-        <Image Grid.Column="0" Grid.Row="0" BackgroundColor="Black" Source="menu.png" WidthRequest="48" HeightRequest="48"/>
-        <Label Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsVisible="True" BackgroundColor="Black" TextColor="White" FontSize="Medium"  FontAttributes="None" Text="{Binding Title}" />
-        <Image Grid.Column="2" Grid.Row="0" BackgroundColor="Black" Source="setting.png" WidthRequest="48" HeightRequest="48"/>
+      xmlns:V="clr-namespace:FLAME.MAUI.MVVM.View"
 
-        <ScrollView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
-            <VerticalStackLayout VerticalOptions="Center">
-                <Frame
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    CornerRadius="8"
-                    Padding="0,0,0,0">
-                    <Image
-                        Source="logo.png"
-                        WidthRequest="120"
-                        HeightRequest="120"/>
-                </Frame>
-            </VerticalStackLayout>
-        </ScrollView>
+      HeaderText="{Binding HeaderText}"
+      FooterText="{Binding FooterText}"
+      FooterLeft="{Binding FooterLeft}"
+      FooterRight="{Binding FooterRight}"
+      OnClickCommand="{Binding OnClickCommand}">
 
-        <Image Grid.Column="0" Grid.Row="2" BackgroundColor="Black" Source="left.png" WidthRequest="48" HeightRequest="48"/>
-        <Label Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsVisible="True" BackgroundColor="Black" TextColor="{StaticResource G3}" FontSize="Small"  FontAttributes="None" Text="{Binding CopyRight}"/>
-        <Image Grid.Column="2" Grid.Row="2" BackgroundColor="Black" Source="right.png" WidthRequest="48" HeightRequest="48"/>
+    <ScrollView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+        <VerticalStackLayout VerticalOptions="Center">
+            <Frame
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                CornerRadius="8"
+                Padding="0,0,0,0">
 
-    </Grid>
+                <ImageButton
+                    Source="logo.png"
+                    WidthRequest="120"
+                    HeightRequest="120"
+                    Command="{Binding OnClickCommand}"
+                    CommandParameter="FLAME"/>
 
-</ContentPage>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</V:V_>

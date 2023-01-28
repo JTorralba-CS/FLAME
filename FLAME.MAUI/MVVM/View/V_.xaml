@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FLAME.MAUI.MVVM.View.V_">
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+
+            <Grid RowDefinitions="48,*,48" ColumnDefinitions="48,*,48">
+
+                <ImageButton Grid.Column="0" Grid.Row="0" Source="menu.png"  WidthRequest="48" HeightRequest="48" Command="{TemplateBinding OnClickCommand}" CommandParameter="MENU"/>
+                <Label Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" FontSize="Medium" Text="{TemplateBinding HeaderText}"/>
+                <ImageButton Grid.Column="2" Grid.Row="0" Source="setting.png" WidthRequest="48" HeightRequest="48" Command="{TemplateBinding OnClickCommand}" CommandParameter="SETTINGS"/>
+
+                <ContentPresenter Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Background="{StaticResource G1}"/>
+
+                <ImageButton Grid.Column="0" Grid.Row="2" Source="left.png" WidthRequest="48" HeightRequest="48"  IsVisible="{TemplateBinding FooterLeft}" Command="{TemplateBinding OnClickCommand}" CommandParameter="LEFT"/>
+                <Label Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource G3}" FontSize="Small" Text="{TemplateBinding FooterText}"/>
+                <ImageButton Grid.Column="2" Grid.Row="2" Source="right.png" WidthRequest="48" HeightRequest="48" IsVisible="{TemplateBinding FooterRight}" Command="{TemplateBinding OnClickCommand}" CommandParameter="RIGHT"/>
+
+            </Grid>
+
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+</ContentPage>
