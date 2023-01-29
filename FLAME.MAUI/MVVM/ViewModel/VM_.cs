@@ -13,10 +13,10 @@ namespace FLAME.MAUI.MVVM.ViewModel
         private string _FooterText;
 
         [ObservableProperty]
-        private bool _FooterLeft;
+        private bool _FooterPrev;
 
         [ObservableProperty]
-        private bool _FooterRight;
+        private bool _FooterNext;
 
         public VM_()
         {

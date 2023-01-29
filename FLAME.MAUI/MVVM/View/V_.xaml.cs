@@ -35,30 +35,30 @@ public partial class V_ : ContentPage
         set => SetValue(FooterTextProperty, value);
     }
 
-    public static readonly BindableProperty FooterLeftProperty = BindableProperty.Create(
-       propertyName: nameof(FooterLeft),
+    public static readonly BindableProperty FooterPrevProperty = BindableProperty.Create(
+       propertyName: nameof(FooterPrev),
        returnType: typeof(bool),
        declaringType: typeof(V_),
        defaultValue: false
        );
 
-    public bool FooterLeft
+    public bool FooterPrev
     {
-        get => (bool)GetValue(FooterLeftProperty);
-        set => SetValue(FooterLeftProperty, value);
+        get => (bool)GetValue(FooterPrevProperty);
+        set => SetValue(FooterPrevProperty, value);
     }
 
-    public static readonly BindableProperty FooterRightProperty = BindableProperty.Create(
-       propertyName: nameof(FooterRight),
+    public static readonly BindableProperty FooterNextProperty = BindableProperty.Create(
+       propertyName: nameof(FooterNext),
        returnType: typeof(bool),
        declaringType: typeof(V_),
        defaultValue: false
        );
 
-    public bool FooterRight
+    public bool FooterNext
     {
-        get => (bool)GetValue(FooterRightProperty);
-        set => SetValue(FooterRightProperty, value);
+        get => (bool)GetValue(FooterNextProperty);
+        set => SetValue(FooterNextProperty, value);
     }
 
     public static readonly BindableProperty OnClickCommandProperty = BindableProperty.Create(

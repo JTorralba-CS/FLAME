@@ -7,8 +7,8 @@ namespace FLAME.MAUI.MVVM.ViewModel
         public VM_About()
         {
             HeaderText = "FLAME";
-            FooterLeft = true;
-            FooterRight = true;
+            FooterPrev = true;
+            FooterNext = true;
         }
 
         public override ICommand OnClickCommand => new Command<string>((X) =>

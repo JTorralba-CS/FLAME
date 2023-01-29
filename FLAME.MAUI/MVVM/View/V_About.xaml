@@ -8,8 +8,8 @@
 
       HeaderText="{Binding HeaderText}"
       FooterText="{Binding FooterText}"
-      FooterLeft="{Binding FooterLeft}"
-      FooterRight="{Binding FooterRight}"
+      FooterPrev="{Binding FooterPrev}"
+      FooterNext="{Binding FooterNext}"
       OnClickCommand="{Binding OnClickCommand}">
 
     <ScrollView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
