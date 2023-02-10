@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<V:V_ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="FLAME.MAUI.MVVM.View.V_Data"
+
+      xmlns:V="clr-namespace:FLAME.MAUI.MVVM.View"
+
+      HeaderText="{Binding HeaderText}"
+      FooterText="{Binding FooterText}"
+      FooterPrev="{Binding FooterPrev}"
+      FooterNext="{Binding FooterNext}"
+      OnClickCommand="{Binding OnClickCommand}">
+
+    <ScrollView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+        <VerticalStackLayout VerticalOptions="Center">
+            <Frame
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                CornerRadius="8"
+                Padding="0,0,0,0">
+
+                <ImageButton
+                    Source="logo.png"
+                    WidthRequest="120"
+                    HeightRequest="120"
+                    Command="{Binding OnClickCommand}"
+                    CommandParameter="FLAME"/>
+
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</V:V_>

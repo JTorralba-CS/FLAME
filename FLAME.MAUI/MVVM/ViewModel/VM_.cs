@@ -25,14 +25,21 @@ namespace FLAME.MAUI.MVVM.ViewModel
 
         public virtual ICommand OnClickCommand => new Command<string>((X) =>
         {
+            //App.Current.MainPage.DisplayAlert("X", X, "OK");
+
             if (X == "FLAME")
             {
                 FooterText = "© " + DateTime.Now.Year.ToString() + " FLAME Solutions";
             }
-            else
+            else if (X == "MENU")
             {
-                FooterText = X;
+                Shell.Current.FlyoutIsPresented = !Shell.Current.FlyoutIsPresented;
+                Shell.Current.CurrentPage.Layout(new Rect(0, 0, Shell.Current.CurrentPage.Width + 1, Shell.Current.CurrentPage.Height + 1));
             }
+            //else
+            //{
+            //    FooterText = X;
+            //}
         });
     }
 }

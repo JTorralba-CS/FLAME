@@ -6,14 +6,76 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FLAME.MAUI.MVVM.View"
 
-    Shell.NavBarIsVisible="False"
-    Shell.FlyoutBehavior="Disabled"
-    Shell.TabBarIsVisible="False">
+    NavBarIsVisible="False"
+    TabBarIsVisible="False"
+    FlyoutBehavior="Flyout"
+    FlyoutIsPresented="False">
 
-    <ShellContent
-        FlyoutItemIsVisible="False"
-        Title=""
+    <Shell.FlyoutHeader >
+        <Grid MinimumHeightRequest="48" MaximumHeightRequest="48" />
+    </Shell.FlyoutHeader>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+
+            <Grid ColumnDefinitions="0.25*" Padding="16, 8">
+                <Label Grid.Column="0"
+                       Text="{Binding Title}"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start">
+                </Label>
+            </Grid>
+
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <FlyoutItem Title="Menu" FlyoutDisplayOptions="AsMultipleItems">
+
+        <ShellContent FlyoutItemIsVisible="False"
+        Title="HOME"
+        ContentTemplate="{DataTemplate local:V_Home}"
+        Route="FLAME">
+            <Shell.TitleView>
+                <HorizontalStackLayout Margin="0,0,80,0" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label FontSize="Medium" Text="HOME" TextColor="White"/>
+                </HorizontalStackLayout>
+            </Shell.TitleView>
+        </ShellContent>
+
+        <ShellContent
+        Title="DATA"
+        ContentTemplate="{DataTemplate local:V_Data}"
+        Route="DATA">
+            <Shell.TitleView>
+                <HorizontalStackLayout Margin="0,0,80,0" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label FontSize="Medium" Text="DATA" TextColor="White"/>
+                </HorizontalStackLayout>
+            </Shell.TitleView>
+        </ShellContent>
+
+        <ShellContent
+        Title="CONTACT"
+        ContentTemplate="{DataTemplate local:V_Contact}"
+        Route="CONTACT">
+            <Shell.TitleView>
+                <HorizontalStackLayout Margin="0,0,80,0" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label FontSize="Medium" Text="CONTACT" TextColor="White"/>
+                </HorizontalStackLayout>
+            </Shell.TitleView>
+        </ShellContent>
+
+        <ShellContent
+        Title="ABOUT"
         ContentTemplate="{DataTemplate local:V_About}"
-        Route="About"/>
+        Route="ABOUT">
+            <Shell.TitleView>
+                <HorizontalStackLayout Margin="0,0,80,0" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label FontSize="Medium" Text="ABOUT" TextColor="White"/>
+                </HorizontalStackLayout>
+            </Shell.TitleView>
+        </ShellContent>
+
+    </FlyoutItem>
 
 </Shell>

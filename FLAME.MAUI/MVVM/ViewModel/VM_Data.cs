@@ -2,13 +2,13 @@
 
 namespace FLAME.MAUI.MVVM.ViewModel
 {
-    public partial class VM_About : VM_
+    public partial class VM_Data : VM_
     {
-        public VM_About()
+        public VM_Data()
         {
-            HeaderText = "FLAME";
-            FooterPrev = false;
-            FooterNext = false;
+            HeaderText = "DATA";
+            FooterPrev = true;
+            FooterNext = true;
         }
 
         //public override ICommand OnClickCommand => new Command<string>((X) =>

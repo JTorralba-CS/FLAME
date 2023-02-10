@@ -63,6 +63,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="MVVM\View\V_Contact.xaml.cs">
+	    <DependentUpon>V_Contact.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="MVVM\View\V_Home.xaml.cs">
+	    <DependentUpon>V_Home.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="MVVM\View\V_Data.xaml.cs">
+	    <DependentUpon>V_Data.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="MVVM\View\V_About.xaml.cs">
 	    <DependentUpon>V_About.xaml</DependentUpon>
 	  </Compile>
@@ -73,6 +82,18 @@
 
 	<ItemGroup>
 	  <Folder Include="MVVM\Model\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="MVVM\View\V_Contact.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MVVM\View\V_Home.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MVVM\View\V_Data.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
