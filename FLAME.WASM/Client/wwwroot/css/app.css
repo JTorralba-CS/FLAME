@@ -198,6 +198,7 @@ main > div {
 }
 
 html, body {
+	overflow: hidden;
 	background: black;
 }
 
