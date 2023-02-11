@@ -199,6 +199,7 @@ main > div {
 
 html, body {
 	overflow: hidden;
+	overscroll-behavior: contain;
 	background: black;
 }
 
