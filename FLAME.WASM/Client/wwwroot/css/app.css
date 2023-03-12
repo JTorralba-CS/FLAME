@@ -198,8 +198,8 @@ main > div {
 }
 
 html, body {
-	overflow: hidden;
 	overscroll-behavior: contain;
+	overflow: hidden;
 	background: black;
 }
 
@@ -291,7 +291,7 @@ a {
 
 .form-control {
 	display: block;
-	min-width: 375px;
+	min-width: 350px;
 	width: 100%;
 	height: calc(2.25rem + 2px);
 	padding: .375rem .75rem;

@@ -1,4 +1,6 @@
-﻿<div id="nav-container">
+﻿@inject NavigationManager URL
+
+<div id="nav-container">
     <div class="bg"></div>
     <div class="button" tabindex="0">
         <span class="icon-bar"></span>
@@ -7,9 +9,16 @@
     </div>
     <div id="nav-content" tabindex="0">
         <ul>
-            <li><a href="Data">Data</a></li>
-            <li><a href="Contact">Contact</a></li>
-            <li><a href="About">About</a></li>
+            <li><a @onclick='()=>a("Data")' @onclick:preventDefault>Data</a></li>
+            <li><a @onclick='()=>a("Contact")' @onclick:preventDefault>Contact</a></li>
+            <li><a @onclick='()=>a("About")' @onclick:preventDefault>About</a></li>
         </ul>
     </div>
 </div>
+
+@code {
+    void a(string href)
+    {
+        URL.NavigateTo(href, false, true);
+    }
+}
