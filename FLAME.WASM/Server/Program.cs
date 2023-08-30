@@ -1,7 +1,23 @@
+using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.AspNetCore.SignalR;
+
+using FLAME.WASM.Server.Hubs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Services.AddResponseCompression(opts =>
+{
+    opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+        new[] { "application/octest-stream" });
+});
+
+builder.Services.AddSignalR(HubOptions =>
+{
+    HubOptions.EnableDetailedErrors = true;
+});
 
 var app = builder.Build();
 
@@ -23,6 +39,8 @@ app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
 app.MapControllers();
+app.MapHub<ChatHub>("/chathub");
+
 app.MapFallbackToFile("index.html");
 app.MapRazorPages();
 

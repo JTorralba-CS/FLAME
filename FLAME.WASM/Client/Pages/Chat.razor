@@ -1,0 +1,88 @@
+﻿@page "/Chat"
+
+@using Microsoft.AspNetCore.SignalR.Client
+@implements IAsyncDisposable
+
+@using FLAME.WASM.Shared
+@inject UniformResourceLocator URL
+
+<PageTitle>Chat</PageTitle>
+
+
+<table id="data" class="center">
+    <thead>
+        <tr>
+            <th>
+                <input @bind="User" placeholder="User" class="form-control"/>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <input @bind="Message" placeholder="Message" class="form-control"/>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <button @onclick="Send" disabled="@(IsConnected==false)" style="height:30px;width:50px">Send</button>
+            </th>
+        </tr>
+        <tr>
+            <br>
+            <hr/>
+        </tr>
+    </thead>
+
+    @foreach (String Message in Messages)
+    {
+        <tr>
+            <td>@Message</td>
+        </tr>
+    }
+
+    <tfoot>
+        <tr><br></tr>
+    </tfoot>
+</table>
+
+@code {
+    private HubConnection? _HubConnection;
+
+    private String? User = "";
+    private String? Message = "";
+
+    private List<String> Messages = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _HubConnection = new HubConnectionBuilder()
+            .WithUrl(URL.Domain + "chathub")
+            .WithAutomaticReconnect()
+            .Build();
+
+        _HubConnection.On<String, String>("RX", (User, Message) =>
+        {
+            Messages.Add($"{User}: {Message}");
+            InvokeAsync(StateHasChanged);
+        });
+
+        await _HubConnection.StartAsync();
+    }
+
+    public bool IsConnected => _HubConnection?.State == HubConnectionState.Connected;
+
+    private async Task Send()
+    {
+        if (_HubConnection is not null)
+        {
+            await _HubConnection.SendAsync("TX", User, Message);
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_HubConnection is not null)
+        {
+            await _HubConnection.DisposeAsync();
+        }
+    }
+};
