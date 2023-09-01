@@ -75,6 +75,7 @@
         if (_HubConnection is not null)
         {
             await _HubConnection.SendAsync("TX", User, Message);
+            Message = "";
         }
     }
 
